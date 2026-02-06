@@ -1,0 +1,9 @@
+<h2>Add Bookmark</h2>
+<form method="post">
+  {% csrf_token %}
+  <input name="title" placeholder="Title"><br>
+  <input name="url" placeholder="URL"><br>
+  <button>Add</button>
+</form>
+<p style="color:red">{{ error }}</p>
+<a href="{% url 'bookmark_list' %}">Back</a>

@@ -1,0 +1,7 @@
+<h2>Edit Bookmark</h2>
+<form method="post">
+  {% csrf_token %}
+  <input name="title" value="{{ bookmark.title }}"><br>
+  <input name="url" value="{{ bookmark.url }}"><br>
+  <button>Update</button>
+</form>

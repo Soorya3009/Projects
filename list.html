@@ -1,0 +1,29 @@
+<h2>My Bookmarks</h2>
+
+<form method="get">
+  <input name="search" placeholder="Search">
+  <button>Search</button>
+</form>
+
+<a href="{% url 'add_bookmark' %}">Add Bookmark</a> |
+<a href="{% url 'logout' %}">Logout</a>
+
+<hr>
+
+{% for b in bookmarks %}
+  <p>
+    <b>{{ b.title }}</b> <br>
+    {{ b.url }} <br>
+    {{ b.created_at }} <br>
+    <a href="{% url 'edit_bookmark' b.id %}">Edit</a>
+    <a href="{% url 'delete_bookmark' b.id %}" onclick="return confirm('Are you sure you want to delete this bookmark?');">Delete</a>
+  </p>
+{% endfor %}
+
+{% if bookmarks.has_previous %}
+  <a href="?page={{ bookmarks.previous_page_number }}">Prev</a>
+{% endif %}
+
+{% if bookmarks.has_next %}
+  <a href="?page={{ bookmarks.next_page_number }}">Next</a>
+{% endif %}
